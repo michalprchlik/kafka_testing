@@ -22,7 +22,10 @@ docker run -d --name kafka-server   -p 9092:9092 -p 9094:9094  --network host   
 python3 -m pip install kafka-python --user
 ```
 
-/opt/bitnami/kafka/bin/kafka-console-consumer.sh --topic topic1 --from-beginning --bootstrap-server localhost:9092
+/opt/bitnami/kafka/bin/kafka-topics.sh --create --topic sfs_scan_files --bootstrap-server localhost:9092
+
+
+/opt/bitnami/kafka/bin/kafka-console-consumer.sh --topic sfs_scan_files --from-beginning --bootstrap-server localhost:9092
 
 
 
