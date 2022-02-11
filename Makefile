@@ -1,5 +1,4 @@
 run-kafka:
-	-podman rm -f kafka
 	podman run \
 	-d \
 	--name kafka \
@@ -12,12 +11,11 @@ run-kafka:
     -e KAFKA_ADVERTISED_LISTENERS=INTERNAL://kafka:9092,OUTSIDE://localhost:9094 \
     -e KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=INTERNAL:PLAINTEXT,OUTSIDE:PLAINTEXT \
     -e KAFKA_INTER_BROKER_LISTENER_NAME=INTERNAL \
-    -e KAFKA_CLIENT_USERS=user \
-    -e KAFKA_CLIENT_PASSWORDS=kyndryl \
+    -e KAFKA_CLIENT_USERS=user,user1 \
+    -e KAFKA_CLIENT_PASSWORDS=kyndryl,kyndryl1 \
     bitnami/kafka:latest
 
 run-zookeeper:
-	-podman rm -f zookeeper
     podman run \
     -d \
     --name zookeeper     \
